@@ -1,6 +1,7 @@
 name = "sentinel-nexus-gateway"
 main = "index.js"
 compatibility_date = "2026-03-19"
+account_id = "22202ff07e559347483b0526ded1fd31"
 
 [vars]
 # The salt used for SHA-256 token generation. 
