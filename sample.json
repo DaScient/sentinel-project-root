@@ -1,0 +1,19 @@
+{
+  "event_id": "uuid-v4",
+  "timestamp": "ISO-8601",
+  "location": {
+    "lat": 0.0000,
+    "lng": 0.0000,
+    "gpe": "Region/City"
+  },
+  "intel": {
+    "headline": "Raw Title",
+    "threat_score": 8,
+    "category": "Kinetic",
+    "adversary_unit": "Insurgent Group Alpha"
+  },
+  "meta": {
+    "source": "NASA-FIRMS",
+    "confidence": 0.92
+  }
+}

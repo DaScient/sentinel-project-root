@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENTINEL NEXUS | Tactical HUD</title>
+    <link rel="stylesheet" href="tactical-styles.css">
+    <script src="//unpkg.com/globe.gl"></script>
+</head>
+<body>
+    <div id="globeViz"></div>
+
+    <div class="hud-top-bar">
+        <div class="glitch-text" data-text="SENTINEL NEXUS">SENTINEL NEXUS</div>
+        <div id="status-indicator">SYSTEM ONLINE // PULSE: NOMINAL</div>
+    </div>
+
+    <div id="detail-panel" class="glass-panel hidden">
+        <button onclick="closePanel()" class="close-btn">×</button>
+        <h2 id="intel-headline">INTEL_REPORT</h2>
+        <hr>
+        <div class="data-field"><span>THREAT SCORE:</span> <b id="intel-score">--</b></div>
+        <div class="data-field"><span>GPE:</span> <b id="intel-gpe">--</b></div>
+        <div class="data-field"><span>ADVERSARY:</span> <b id="intel-unit">--</b></div>
+        <div class="data-field"><span>INTENT:</span> <p id="intel-intent">Waiting for selection...</p></div>
+        <div class="data-field"><span>SOURCE:</span> <i id="intel-source">--</i></div>
+    </div>
+
+    <script src="gl-engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+name = "sentinel-nexus-gateway"
+main = "index.js"
+compatibility_date = "2026-03-19"
+
+[vars]
+# The salt used for SHA-256 token generation. 
+# In production, use `wrangler secret put SECRET_SALT` instead.
+# SECRET_SALT = "YOUR_HIDDEN_SALT_HERE" 
+
+[[kv_namespaces]]
+binding = "NEXUS_STATE"
+id = "YOUR_KV_NAMESPACE_ID" # Run `wrangler kv:namespace create NEXUS_STATE` to get this ID
+
+[triggers]
+crons = [] # No crons needed; this is a reactive API

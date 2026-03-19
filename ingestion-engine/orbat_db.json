@@ -1,0 +1,22 @@
+{
+  "units": [
+    {
+      "id": "UNIT-001",
+      "designation": "Houthi Rebel Cell - Sanaa",
+      "capability": ["UAV", "Anti-Ship Missiles"],
+      "last_known_coord": {"lat": 15.3694, "lng": 44.1910},
+      "radius_km": 150
+    },
+    {
+      "id": "UNIT-002",
+      "designation": "Al-Shabaab Mobile Column",
+      "capability": ["IED", "Small Arms"],
+      "last_known_coord": {"lat": 2.0469, "lng": 45.3182},
+      "radius_km": 100
+    }
+  ],
+  "global_metadata": {
+    "last_updated": "2026-03-19T01:32:00Z",
+    "classification": "OSINT-SENSITIVE"
+  }
+}

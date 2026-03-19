@@ -1,0 +1,31 @@
+:root {
+    --neon-blue: #00f2ff;
+    --alert-red: #ff3c3c;
+    --glass-bg: rgba(0, 20, 40, 0.7);
+}
+
+body { margin: 0; background: #000; overflow: hidden; font-family: 'Courier New', Courier, monospace; color: var(--neon-blue); }
+
+.hud-top-bar {
+    position: absolute; top: 20px; left: 20px; z-index: 10;
+    pointer-events: none; text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.glass-panel {
+    position: absolute; right: 20px; top: 80px; width: 320px;
+    background: var(--glass-bg); backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 242, 255, 0.3); padding: 20px;
+    border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hidden { transform: translateX(400px); }
+
+.data-field { margin: 15px 0; font-size: 0.9rem; }
+.data-field span { color: rgba(255,255,255,0.6); display: block; font-size: 0.7rem; }
+
+.close-btn { background: none; border: none; color: white; float: right; cursor: pointer; font-size: 1.5rem; }
+
+hr { border: 0; border-top: 1px solid var(--neon-blue); opacity: 0.3; }
+
+b#intel-score { color: var(--alert-red); font-size: 1.2rem; }
