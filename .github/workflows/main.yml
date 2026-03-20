@@ -35,7 +35,7 @@ jobs:
 
       - name: 🛡️ Generate Handshake & Push to Edge
         env:
-          CF_URL: "https://sentinel-nexus-gateway.your-subdomain.workers.dev/ingest"
+          CF_URL: "https://sentinel-nexus-gateway.aristocles24.workers.dev/ingest"
           SECRET_SALT: ${{ secrets.SALT }}
         run: |
           # 1. Generate the daily SHA-256 Token (SALT + YYYY-MM-DD)
