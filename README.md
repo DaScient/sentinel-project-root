@@ -1,6 +1,4 @@
-***
-
-# 🌐 DaScient Sentinel Nexus
+# DaScient Apps | Sentinel
 
 **Multi-Domain Battlespace Awareness & OSINT Platform**
 
