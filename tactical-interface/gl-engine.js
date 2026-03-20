@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const GATEWAY_URL = "https://sentinel-nexus-gateway.your-subdomain.workers.dev/tactical";
+const GATEWAY_URL = "https://sentinel-nexus-gateway.aristocles24.workers.dev/tactical";
 const REFRESH_INTERVAL_MS = 60000; // Poll every 60 seconds
 
 // --- INITIALIZE GLOBE ---
