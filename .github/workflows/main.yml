@@ -21,7 +21,7 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: |
-          pip install -r ingestion-engine/requirements.txt
+          pip install ../.
           
       - name: ☄️ Execute Ingestion (Scraper)
         env:
