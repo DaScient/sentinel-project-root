@@ -7,7 +7,7 @@ from geopy.distance import geodesic
 class CognitiveSieve:
     def __init__(self):
         genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-        self.model = genai.GenerativeModel('gemini-1.5-pro')
+        self.model = genai.GenerativeModel('gemini-2.5-pro')
 
         # Get the directory where the script actually lives
         base_dir = os.path.dirname(os.path.abspath(__file__))
