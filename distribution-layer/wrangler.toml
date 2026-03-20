@@ -6,7 +6,7 @@ account_id = "22202ff07e559347483b0526ded1fd31"
 [vars]
 # The salt used for SHA-256 token generation. 
 # In production, use `wrangler secret put SECRET_SALT` instead.
-# SECRET_SALT = "YOUR_HIDDEN_SALT_HERE" 
+# SECRET_SALT = "QmffEhFM1xDdmHpPbZODELNZmN12VimMRBJlbM2oN4=" 
 
 [[kv_namespaces]]
 binding = "NEXUS_STATE"
