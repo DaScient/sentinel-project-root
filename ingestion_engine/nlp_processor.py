@@ -8,7 +8,12 @@ class CognitiveSieve:
     def __init__(self):
         genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
         self.model = genai.GenerativeModel('gemini-1.5-pro')
-        with open('orbat_db.json', 'r') as f:
+
+        # Get the directory where the script actually lives
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        orbat_path = os.path.join(base_dir, 'orbat_db.json')
+        
+        with open(orbat_path, 'r') as f:
             self.orbat = json.load(f)
 
     def calculate_proximity(self, event_lat, event_lng):
