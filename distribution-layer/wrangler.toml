@@ -10,7 +10,7 @@ account_id = "22202ff07e559347483b0526ded1fd31"
 
 [[kv_namespaces]]
 binding = "NEXUS_STATE"
-id = "YOUR_KV_NAMESPACE_ID" # Run `wrangler kv:namespace create NEXUS_STATE` to get this ID
+id = "601fd807e634495c875b153f1344ae3c"
 
 [triggers]
 crons = [] # No crons needed; this is a reactive API
