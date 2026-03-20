@@ -2,7 +2,7 @@ import google.generativeai as genai
 import json
 import os
 import polars as pl
-from math import geodesic
+from geopy.distance import geodesic
 
 class CognitiveSieve:
     def __init__(self):
