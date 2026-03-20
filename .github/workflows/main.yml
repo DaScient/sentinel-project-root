@@ -21,8 +21,8 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: |
-          pip install httpx polars google-generativeai geopy
-
+          pip install -r ingestion-engine/requirements.txt
+          
       - name: ☄️ Execute Ingestion (Scraper)
         env:
           NASA_FIRMS_KEY: ${{ secrets.NASA_FIRMS_KEY }}
