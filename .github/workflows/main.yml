@@ -37,17 +37,20 @@ jobs:
         env:
           CF_URL: "https://sentinel-nexus-gateway.aristocles24.workers.dev/ingest"
           SECRET_SALT: ${{ secrets.SALT }}
+          CF_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
         run: |
-          # 1. Generate the daily SHA-256 Token (SALT + YYYY-MM-DD)
-          CURRENT_DATE=$(date +%Y-%m-%d)
+          # 1. Generate the daily SHA-256 Token (SALT + YYYY-MM-DD in UTC)
+          CURRENT_DATE=$(date -u +%Y-%m-%d)
           COMBINED_STR="${SECRET_SALT}${CURRENT_DATE}"
           AUTH_TOKEN=$(echo -n "$COMBINED_STR" | sha256sum | awk '{print $1}')
           
           echo "Handshake generated for $CURRENT_DATE"
           
-          # 2. POST the fused data to the Cloudflare Worker
-          # Assumes nlp_processor.py outputs 'fused_state.json' in the root
+          # 2. POST the fused data with Zero Trust Service Headers
           curl -X POST "$CF_URL" \
             -H "Authorization: Bearer $AUTH_TOKEN" \
+            -H "CF-Access-Client-Id: $CF_CLIENT_ID" \
+            -H "CF-Access-Client-Secret: $CF_CLIENT_SECRET" \
             -H "Content-Type: application/json" \
             -d @fused_state.json
