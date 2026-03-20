@@ -1,0 +1,53 @@
+name: Sentinel Nexus Pulse
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # Triggers every 15 minutes
+  workflow_dispatch:      # Allows you to click "Run Workflow" manually for testing
+
+jobs:
+  sentinel-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛰️ Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip' # Speeds up subsequent runs
+
+      - name: 📦 Install Dependencies
+        run: |
+          pip install httpx polars google-generativeai geopy
+
+      - name: ☄️ Execute Ingestion (Scraper)
+        env:
+          NASA_FIRMS_KEY: ${{ secrets.NASA_FIRMS_KEY }}
+        run: python ingestion-engine/scraper_main.py
+
+      - name: 🧠 Execute Cognitive Sieve (Gemini AI)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python ingestion-engine/nlp_processor.py
+
+      - name: 🛡️ Generate Handshake & Push to Edge
+        env:
+          CF_URL: "https://sentinel-nexus-gateway.your-subdomain.workers.dev/ingest"
+          SECRET_SALT: ${{ secrets.SALT }}
+        run: |
+          # 1. Generate the daily SHA-256 Token (SALT + YYYY-MM-DD)
+          CURRENT_DATE=$(date +%Y-%m-%d)
+          COMBINED_STR="${SECRET_SALT}${CURRENT_DATE}"
+          AUTH_TOKEN=$(echo -n "$COMBINED_STR" | sha256sum | awk '{print $1}')
+          
+          echo "Handshake generated for $CURRENT_DATE"
+          
+          # 2. POST the fused data to the Cloudflare Worker
+          # Assumes nlp_processor.py outputs 'fused_state.json' in the root
+          curl -X POST "$CF_URL" \
+            -H "Authorization: Bearer $AUTH_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d @fused_state.json
