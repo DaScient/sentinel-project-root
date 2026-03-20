@@ -31,7 +31,7 @@ jobs:
       - name: 🧠 Execute Cognitive Sieve (Gemini AI)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python ingestion-engine/nlp_processor.py
+        run: python ingestion_engine/nlp_processor.py
 
       - name: 🛡️ Generate Handshake & Push to Edge
         env:
