@@ -21,13 +21,13 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: |
-          cd ingestion-engine && pip install .
-          
-      - name: ☄️ Execute Ingestion (Scraper)
+          cd ingestion_engine && pip install .
+
+      - name: ☄️ Execute Ingestion
         env:
           NASA_FIRMS_KEY: ${{ secrets.NASA_FIRMS_KEY }}
-        run: python ingestion-engine/scraper_main.py
-
+        run: python ingestion_engine/scraper_main.py
+          
       - name: 🧠 Execute Cognitive Sieve (Gemini AI)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
